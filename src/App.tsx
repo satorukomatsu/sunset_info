@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
 import './App.css';
 import CurrentTime from './components/CurrentTime';
+import CurrentPosition from './components/CurrentPosition';
 import { useState, useEffect } from 'react';
 
 function App() {
-  let [nowTime, setNowTime] = useState("")
+  const [nowTime, setNowTime] = useState("")
+  const [position, setPosition] = useState({latitude: 0, longitude: 0});
 
   const now = new Date()
   let nowHour = now.getHours();
@@ -26,14 +28,24 @@ function App() {
   const currentTime = `${hours} : ${minuites} : ${seconds}`
   const ref = useRef(nowTime);
 
+
+  const getPosition = () => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const {latitude, longitude} = position.coords;
+        setPosition({latitude, longitude})
+    })
+  }
+
   useEffect (() => {
     setNowTime(ref.current = currentTime);
     setInterval(setNowTime, 1000);
+    getPosition()
   }, [currentTime])
 
   return (
     <div className="App">
       <CurrentTime time={nowTime}/>
+      <CurrentPosition onClick={getPosition} position={position}/>
     </div>
   );
 }
