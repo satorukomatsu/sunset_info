@@ -1,24 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useRef } from 'react';
 import './App.css';
+import CurrentTime from './components/CurrentTime';
+import { useState, useEffect } from 'react';
 
 function App() {
+  let [nowTime, setNowTime] = useState("")
+
+  const now = new Date()
+  let nowHour = now.getHours();
+  let nowMin = now.getMinutes();
+  let nowSec = now.getSeconds();
+  let hours: string, minuites: string, seconds: string;
+  hours = `${nowHour}`
+  if (nowMin < 10) {
+        minuites = `0${nowMin}`
+  } else {
+        minuites = `${nowMin}`
+  }
+  if (nowSec < 10) {
+        seconds = `0${nowSec}`
+  } else {
+        seconds = `${nowSec}`
+  }
+    
+  const currentTime = `${hours} : ${minuites} : ${seconds}`
+  const ref = useRef(nowTime);
+
+  useEffect (() => {
+    setNowTime(ref.current = currentTime);
+    setInterval(setNowTime, 1000);
+  }, [currentTime])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <CurrentTime time={nowTime}/>
     </div>
   );
 }
