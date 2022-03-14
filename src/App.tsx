@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import './App.css';
 import CurrentTime from './components/CurrentTime';
 import CurrentPosition from './components/CurrentPosition';
+import SunsetTime from './components/SunsetTime';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -39,13 +40,14 @@ function App() {
   useEffect (() => {
     setNowTime(ref.current = currentTime);
     setInterval(setNowTime, 1000);
-    getPosition()
   }, [currentTime])
+
 
   return (
     <div className="App">
       <CurrentTime time={nowTime}/>
-      <CurrentPosition onClick={getPosition} position={position}/>
+      <CurrentPosition onClick={getPosition()} position={position}/>
+      <SunsetTime/>
     </div>
   );
 }

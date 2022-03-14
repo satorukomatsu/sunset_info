@@ -1,8 +1,7 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
 interface Props {
-    onClick: () => void
+    onClick: void
     position: {latitude: number, longitude: number}
 }
 
