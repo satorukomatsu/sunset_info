@@ -1,14 +1,13 @@
 import React from "react";
 
 interface Props {
-    onClick: void
     position: {latitude: number, longitude: number}
 }
 
 const CurrentPosition = (props: Props) => {   
     return (
         <>
-        <button onClick={() => props.onClick}>get current position</button>
+        <p>現在の位置情報</p>
         <div>{props.position.latitude}</div>
         <div>{props.position.longitude}</div>
         </>
