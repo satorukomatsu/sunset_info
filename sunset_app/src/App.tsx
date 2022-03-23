@@ -1,13 +1,11 @@
 import React, { useRef } from 'react';
 import './App.css';
-import CurrentTime from './components/CurrentTime';
-import CurrentPosition from './components/CurrentPosition';
-import SunsetTime from './components/SunsetTime';
+import { CurrentTime, RegistrationForm } from './components';
 import { useState, useEffect } from 'react';
 
 function App() {
   //現在時刻のステイト
-  const [nowTime, setNowTime] = useState("")
+  const [nowTime, setNowTime] = useState("");
   //現在の位置情報のステイト
   const [position, setPosition] = useState({latitude: 0, longitude: 0});
 
@@ -46,15 +44,16 @@ function App() {
   //マウンティング時に呼び出す関数
   useEffect (() => {
     setNowTime(ref.current = currentTime);
-    // setInterval(setNowTime, 1000);
+  }, [currentTime])
+
+  useEffect(() => {
     getPosition();
-  }, [currentTime, position])
+  }, [])
 
   return (
     <div className="App">
       <CurrentTime time={nowTime}/>
-      <CurrentPosition position={position}/>
-      <SunsetTime/>
+      <RegistrationForm />
     </div>
   );
 }
