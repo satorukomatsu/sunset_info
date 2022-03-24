@@ -1,17 +1,23 @@
 import React from "react";
 
 interface Props {
+    date: string
     time: string
 }
 
-const CurrentTime = (props: Props) => {
+const style: React.CSSProperties = {
+    padding:'10px'
+}
+
+const CurrentTimeAndDate = (props: Props) => {
     
     return (
         <>
         <p>現在時刻</p>
-        <p className="current_time">{props.time}</p>
+        <span style={style} className="current_date">{props.date}</span>
+        <span style={style} className="current_time">{props.time}</span>
         </>
     );
 }
 
-export default CurrentTime;
+export default CurrentTimeAndDate;

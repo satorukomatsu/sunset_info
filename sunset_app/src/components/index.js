@@ -3,3 +3,4 @@ export { default as CurrentTime } from "./CurrentTime";
 export { default as RegistrationForm } from "./Registration";
 export { default as Field } from "./Field";
 export { default as OutlinedButton } from "./Button";
+export { default as SunsetTime } from "./SunsetTime";

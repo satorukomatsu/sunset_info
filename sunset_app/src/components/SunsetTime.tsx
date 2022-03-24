@@ -1,25 +1,18 @@
 import React from "react";
 
+const style: React.CSSProperties = {
+    padding: '20px'
+}
 const SunsetTime = () => {
-    const axios = require('axios');
-    const url = 'https://labs.bitmeister.jp/ohakon/json/';
-    const pram = `?mode=sun_moon_rise_set&year=2022&month=3&day=12&lat=35.8554&lng=139.6512`
-
-    async function main () {
-        try{
-            const res = await axios.get(url + pram);
-            const items = res.data;
-            console.log(items.rise_and_set.sunrise);
-        } catch(error:any) {
-            console.log(error.response)
-        }
-    }
-    main();
 
     return (
-        <>
-        <div></div>
-        </>
+        <div style={style}>
+            <h1>本日の日の入り時間</h1>
+            {/* 日の入り時間の取得 */}
+            <p>今日は○○時○○分に日が暮れます</p><br />
+            {/* 日の入り時間の１時間前の表示 */}
+            <p>○○時○○分までには洗濯物を取り込まなくちゃね！</p>
+        </div>
     )
 }
 
