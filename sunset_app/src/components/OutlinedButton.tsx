@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 
 type Props = {
     title: string
-    onClick: () => void
+    // onClick: () => void
 }
 
 const OutlinedButton = (props: Props) => {

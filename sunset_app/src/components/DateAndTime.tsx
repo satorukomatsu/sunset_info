@@ -9,7 +9,7 @@ const style: React.CSSProperties = {
     padding:'10px'
 }
 
-const CurrentTimeAndDate = (props: Props) => {
+const DateAndTime = (props: Props) => {
     
     return (
         <>
@@ -20,4 +20,4 @@ const CurrentTimeAndDate = (props: Props) => {
     );
 }
 
-export default CurrentTimeAndDate;
+export default DateAndTime;
